@@ -1,15 +1,14 @@
 "use client"
 
 import { useMotionValue, motion, useMotionTemplate } from "framer-motion"
-import type React from "react"
-import { type MouseEvent as ReactMouseEvent, useState } from "react"
-import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect"
+import React, { type MouseEvent as ReactMouseEvent, useState } from "react"
+import GoldRevealCanvas from "@/components/ui/GoldRevealCanvas" // ✅ ensure this matches the actual path
 import { cn } from "@/lib/utils"
 
 export const CardSpotlight = ({
   children,
   radius = 350,
-  color = "#FFD700",
+  color = "#FFD700", // gold highlight default
   className,
   ...props
 }: {
@@ -19,27 +18,31 @@ export const CardSpotlight = ({
 } & React.HTMLAttributes<HTMLDivElement>) => {
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
-  function handleMouseMove({ currentTarget, clientX, clientY }: ReactMouseEvent<HTMLDivElement>) {
-    const { left, top } = currentTarget.getBoundingClientRect()
 
+  function handleMouseMove({
+    currentTarget,
+    clientX,
+    clientY,
+  }: ReactMouseEvent<HTMLDivElement>) {
+    const { left, top } = currentTarget.getBoundingClientRect()
     mouseX.set(clientX - left)
     mouseY.set(clientY - top)
   }
 
   const [isHovering, setIsHovering] = useState(false)
-  const handleMouseEnter = () => setIsHovering(true)
-  const handleMouseLeave = () => setIsHovering(false)
+
   return (
     <div
       className={cn(
-        "group/spotlight p-6 rounded-xl relative border border-neutral-800 bg-black dark:border-neutral-800 transition-all duration-300 hover:border-neutral-600 cursor-pointer",
-        className,
+        "group/spotlight p-6 rounded-xl relative border border-neutral-800 bg-black transition-all duration-300 hover:border-yellow-500 cursor-pointer",
+        className
       )}
       onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => setIsHovering(false)}
       {...props}
     >
+      {/* Gold radial mask overlay */}
       <motion.div
         className="pointer-events-none absolute z-0 -inset-px rounded-xl opacity-0 transition duration-300 group-hover/spotlight:opacity-100"
         style={{
@@ -54,18 +57,16 @@ export const CardSpotlight = ({
         }}
       >
         {isHovering && (
-          <CanvasRevealEffect
-            animationSpeed={5}
-            containerClassName="bg-transparent absolute inset-0 pointer-events-none"
-            colors={[
-             [248, 228, 92], // #F8E45C
-              [255, 215, 0]
-            ]}
+          <GoldRevealCanvas
             dotSize={3}
+            interval={200}
+            containerClassName="bg-transparent absolute inset-0 pointer-events-none z-0"
           />
         )}
       </motion.div>
-      {children}
+
+      {/* Card content */}
+      <div className="relative z-10">{children}</div>
     </div>
   )
 }
