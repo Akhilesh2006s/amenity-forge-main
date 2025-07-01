@@ -142,9 +142,9 @@ export default function HeroGeometric() {
             variants={fadeUpVariants}
             initial="hidden"
             animate="visible"
-            className="flex justify-center"
-          >
-            <Image src="logo.jpg" alt="Logo" width={490} height={500} />
+  className="flex justify-center -translate-y-16"
+            >
+            <Image src="Logo.jpg" alt="Logo" width={120} height={70} />
           </motion.div>
         </div>
       </div>
