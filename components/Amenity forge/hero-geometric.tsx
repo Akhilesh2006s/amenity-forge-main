@@ -144,7 +144,7 @@ export default function HeroGeometric() {
             animate="visible"
   className="flex justify-center -translate-y-16"
             >
-            <Image src="Logo.jpg" alt="Logo" width={120} height={70} />
+            <Image src="Logo.jpg" alt="Logo" width={120} height={100} />
           </motion.div>
         </div>
       </div>
