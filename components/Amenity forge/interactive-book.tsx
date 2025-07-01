@@ -18,28 +18,28 @@ export default function ComicBookReader() {
     {
       title: "Page 1",
       leftPage: {
-        background: "COVER2.png"
+        background: "2.jpg"
       },
       rightPage: {
-        background: "COVER2.png"
+        background: "3.jpg"
       }
     },
     {
       title: "Page 2",
       leftPage: {
-        background: "COVER2.png"
+        background: "4.jpg"
       },
       rightPage: {
-        background: "COVER2.png"
+        background: "5.jpg"
       }
     },
     {
       title: "Page 3",
       leftPage: {
-        background: "COVER2.png"
+        background: "6.jpg"
       },
       rightPage: {
-        background: "COVER2.png"
+        background: "7.jpg"
       }
     }
   ]
@@ -141,9 +141,9 @@ export default function ComicBookReader() {
               perspective: "1000px",
             }}
           >
-            <Card className="w-full sm:w-[400px] md:w-[500px] h-[500px] sm:h-[550px] md:h-[600px] shadow-2xl relative overflow-hidden border-4 border-yellow-500 bg-white">
+            <Card className="w-full sm:w-[400px] md:w-[500px] h-[700px] sm:h-[750px] md:h-[700px] shadow-2xl relative overflow-hidden border-4 border-yellow-500 bg-white">
               <div className="absolute inset-0">
-                <img src="COVER.jpg" alt="Brochure Cover" className="w-full h-full object-cover" />
+                <img src="1.jpg" alt="Brochure Cover" className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-yellow-900/30"></div>
               </div>
               <div className="absolute inset-0 p-8 flex flex-col justify-end items-center text-white">
@@ -158,7 +158,7 @@ export default function ComicBookReader() {
         ) : (
           <div id="book-container" className="relative cursor-grab active:cursor-grabbing">
             <Card
-              className={`w-full sm:w-[800px] md:w-[900px] h-[500px] sm:h-[550px] md:h-[600px] bg-white shadow-2xl relative overflow-hidden border-4 border-yellow-500 transition-all duration-1000 ${isOpening ? "animate-book-open" : ""}`}
+              className={`w-full sm:w-[500px] md:w-[800px] h-[700px] sm:h-[750px] md:h-[700px] bg-white shadow-2xl relative overflow-hidden border-4 border-yellow-500 transition-all duration-1000 ${isOpening ? "animate-book-open" : ""}`}
             >
               <div className="absolute left-1/2 top-0 w-2 h-full bg-yellow-600 transform -translate-x-1/2 z-20 shadow-lg"></div>
 
